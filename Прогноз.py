@@ -83,7 +83,7 @@ for fname in os.listdir(DATA_DIR):
     station = os.path.splitext(fname)[0]
     path = os.path.join(DATA_DIR, fname)
 
-    if fname.lower().endswith(('.xlsx', '.xls')):
+    if fname.lower  ().endswith(('.xlsx', '.xls')):
         df = pd.read_excel(path, engine='openpyxl')
     else:
         df = pd.read_csv(path)
@@ -201,6 +201,8 @@ for fname in os.listdir(DATA_DIR):
     for name, pred in methods_pred.items():
         plt.plot(test_ts.index, pred, '--', label=name)
     plt.title(f"{station}: Прогноз {HORIZON} месяцев")
+    plt.xlabel("Дата")
+    plt.ylabel("Выработанная энергия (кВт/Ч)")
     plt.legend()
     plt.tight_layout()
     plt.show()
